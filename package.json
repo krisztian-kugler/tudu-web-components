@@ -1,0 +1,19 @@
+{
+  "name": "tudu-web-components",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/krisztian-kugler/tudu-web-components.git"
+  },
+  "author": "Krisztian Kugler",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/krisztian-kugler/tudu-web-components/issues"
+  },
+  "homepage": "https://github.com/krisztian-kugler/tudu-web-components#readme"
+}

@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "paths": {
+      "@event-emitter": ["src/libs/event-emitter/index.ts"],
+      "@router": ["src/libs/router/index.ts"]
+    },
+    "removeComments": true,
+    "sourceMap": true,
+    "target": "ES6"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}
