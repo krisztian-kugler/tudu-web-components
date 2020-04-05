@@ -1,6 +1,8 @@
 export abstract class Injector {
   static providers: any[] = [];
 
+  static providersMap = new Map();
+
   static register(Provider: any) {
     if (this.providers[Provider.name]) return;
     this.providers[Provider.name] = new Provider();

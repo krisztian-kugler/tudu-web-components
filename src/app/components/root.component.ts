@@ -1,12 +1,15 @@
-import { Component } from "../../libs/core/component";
+import { Component, Injector } from "@core";
+import { DataService } from "../services/data.service";
 
 @Component({
   selector: "tudu-root",
+  providers: [DataService],
 })
 export default class RootComponent extends HTMLElement {
-  constructor() {
+  constructor(private dataService: DataService) {
     super();
-    console.dir(this);
+    this.dataService = Injector.inject(this, DataService);
+    console.log(this.dataService);
   }
 
   connectedCallback() {
@@ -14,6 +17,6 @@ export default class RootComponent extends HTMLElement {
   }
 
   render() {
-    this.insertAdjacentHTML("afterbegin", `<h1>app works!</h1>`);
+    this.insertAdjacentHTML("afterbegin", `<tudu-header></tudu-header><tudu-header></tudu-header><main></main>`);
   }
 }

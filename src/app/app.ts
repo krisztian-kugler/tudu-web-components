@@ -1,7 +1,6 @@
 export default abstract class App {
   public static set components(components: any[]) {
     components.forEach(c => {
-      console.dir(c);
       customElements.define(c.prototype.selector, c);
       this._components.push(c);
     });
@@ -13,7 +12,19 @@ export default abstract class App {
 
   private static _components: any = [];
 
-  public static services: { [key: string]: any } = {};
+  public static set providers(providers: any) {
+    providers.forEach((Provider: FunctionConstructor) => {
+      this._providers[Provider.name] = new Provider();
+    });
+  }
+
+  public static get providers() {
+    return this._providers;
+  }
+
+  private static _providers: { [key: string]: any } = {};
+
+  public static services: any = {};
 
   public static register(Service: any) {
     this.services[Service.name] = new Service();
