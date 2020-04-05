@@ -1,11 +1,12 @@
-import { Component } from "../core/component";
+import { Component } from "../../libs/core/component";
 
 @Component({
-  selector: "tudu-root"
+  selector: "tudu-root",
 })
 export default class RootComponent extends HTMLElement {
   constructor() {
     super();
+    console.dir(this);
   }
 
   connectedCallback() {

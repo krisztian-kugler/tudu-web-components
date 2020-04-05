@@ -6,29 +6,35 @@ module.exports = {
   entry: "./src/main.ts",
   output: {
     filename: "main.js",
-    path: path.resolve(__dirname, "dist")
+    path: path.resolve(__dirname, "dist"),
   },
   resolve: {
-    extensions: [".js", ".ts", ".tsx"]
+    extensions: [".js", ".ts", ".tsx"],
+    alias: {
+      "@core": path.resolve(__dirname, "src/libs/core"),
+      "@event-emitter": path.resolve(__dirname, "src/libs/event-emitter"),
+      "@router": path.resolve(__dirname, "src/libs/router"),
+      "@utils": path.resolve(__dirname, "src/libs/utils"),
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/index.html"
-    })
+      template: "./src/index.html",
+    }),
   ],
   module: {
     rules: [
       {
         test: /\.s[ac]ss$/,
-        use: ["style-loader", "css-loader", "sass-loader"]
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
         test: /\.tsx?$/,
-        use: "ts-loader"
-      }
-    ]
+        use: "ts-loader",
+      },
+    ],
   },
   devServer: {
-    historyApiFallback: true
-  }
+    historyApiFallback: true,
+  },
 };
