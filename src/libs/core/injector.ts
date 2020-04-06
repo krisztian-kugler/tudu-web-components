@@ -1,32 +1,39 @@
 export abstract class Injector {
-  static providers: any[] = [];
+  private static providers = new WeakMap();
 
-  static providersMap = new Map();
-
-  static register(Provider: any) {
-    if (this.providers[Provider.name]) return;
-    this.providers[Provider.name] = new Provider();
+  private static getProvider(component: HTMLElement, provider: any) {
+    const componentProviders = this.providers.get(component);
+    for (let i = 0; i < componentProviders.length; i++) {
+      const name = Object.getPrototypeOf(componentProviders[i]).constructor.name;
+      if (name === provider.name) {
+        return componentProviders[i];
+      }
+    }
   }
 
-  static inject(component: any, provider: any) {
-    if (provider.name in component.providers) {
-      return component.providers[provider.name];
-    } else {
-      let element: HTMLElement = component;
+  static register(component: HTMLElement, ...providers: FunctionConstructor[]) {
+    this.providers.set(
+      component,
+      providers.map(p => new p())
+    );
+  }
 
-      while (element.parentElement) {
-        if (!element.parentElement.tagName.includes("-")) {
-          element = element.parentElement;
-        } else {
-          if ((element.parentElement as any).providers && provider.name in (element.parentElement as any).providers) {
-            return (element.parentElement as any).providers[provider.name];
-          } else {
-            element = element.parentElement;
-          }
-        }
-      }
-
-      if (!element) throw new Error("Provider not found!");
+  static inject(component: HTMLElement, provider: any) {
+    if (this.providers.has(component)) {
+      const p = this.getProvider(component, provider);
+      if (p) return p;
     }
+
+    let element: HTMLElement = component.parentElement;
+
+    while (element !== document.body) {
+      if (element.tagName.includes("-") && this.providers.has(element)) {
+        const p = this.getProvider(element, provider);
+        if (p) return p;
+      }
+      element = element.parentElement;
+    }
+
+    throw new Error(`Provider '${provider.name}' is not registered in any component.`);
   }
 }
