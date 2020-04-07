@@ -18,6 +18,9 @@ export default class RootComponent extends HTMLElement {
   render() {
     this.innerHTML = `
       <tudu-header></tudu-header>
+      <main>
+        <tudu-column></tudu-column>
+      </main>
     `;
   }
 }

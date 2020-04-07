@@ -15,8 +15,6 @@ export default class HeaderComponent extends HTMLElement {
   }
 
   render() {
-    this.innerHTML = `
-      Header
-    `;
+    this.innerHTML = `Header`;
   }
 }
