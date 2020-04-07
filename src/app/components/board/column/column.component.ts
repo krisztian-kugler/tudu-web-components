@@ -12,6 +12,9 @@ export default class ColumnComponent extends HTMLElement {
   onInit() {}
 
   render() {
-    this.innerHTML = `Column`;
+    this.innerHTML = `
+      <h2 class="column-title">Title</h2>
+      <tudu-card></tudu-card>
+    `;
   }
 }
