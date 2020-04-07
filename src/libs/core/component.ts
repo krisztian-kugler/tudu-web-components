@@ -2,7 +2,7 @@ import { Injector } from "./injector";
 
 interface ComponentConfig {
   selector: string;
-  providers?: FunctionConstructor[];
+  providers?: any[];
 }
 
 export function Component(config: ComponentConfig) {
@@ -17,7 +17,7 @@ export function Component(config: ComponentConfig) {
       constructor(...args: any[]) {
         super();
         if (providers.length) Injector.register(this as any, ...providers);
-        this.onInit();
+        if (super.onInit) super.onInit();
         this.render();
       }
     };

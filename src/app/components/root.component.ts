@@ -1,4 +1,5 @@
 import { Component, Injector } from "@core";
+import "./root.component.scss";
 import { DataService } from "../services/data.service";
 
 @Component({
@@ -8,15 +9,15 @@ import { DataService } from "../services/data.service";
 export default class RootComponent extends HTMLElement {
   constructor(private dataService: DataService) {
     super();
-    this.dataService = Injector.inject(this, DataService);
-    console.log(this.dataService);
   }
 
-  connectedCallback() {
-    this.render();
+  onInit() {
+    this.dataService = Injector.inject(this, DataService);
   }
 
   render() {
-    this.insertAdjacentHTML("afterbegin", `<tudu-header></tudu-header><tudu-header></tudu-header><main></main>`);
+    this.innerHTML = `
+      <tudu-header></tudu-header>
+    `;
   }
 }

@@ -8,15 +8,15 @@ import { DataService } from "../../services/data.service";
 export default class HeaderComponent extends HTMLElement {
   constructor(private dataService: DataService) {
     super();
-    this.dataService = Injector.inject(this, DataService);
-    console.dir(this);
   }
 
-  connectedCallback() {
-    this.render();
+  onInit() {
+    this.dataService = Injector.inject(this, DataService);
   }
 
   render() {
-    this.insertAdjacentHTML("afterbegin", `<header>Header</header>`);
+    this.innerHTML = `
+      Header
+    `;
   }
 }

@@ -1,7 +1,7 @@
 export default abstract class App {
   public static set components(components: any[]) {
     components.forEach(c => {
-      customElements.define(c.prototype.selector, c);
+      customElements.define(c.selector, c);
       this._components.push(c);
     });
   }
