@@ -18,7 +18,11 @@ export function Component(config: ComponentConfig) {
         super();
         if (providers.length) Injector.register(this as any, ...providers);
         if (super.onInit) super.onInit();
-        this.render();
+      }
+
+      connectedCallback() {
+        if (super.render) super.render();
+        if (super.connectedCallback) super.connectedCallback();
       }
     };
   };

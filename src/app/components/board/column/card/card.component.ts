@@ -5,14 +5,15 @@ import "./card.component.scss";
   selector: "tudu-card",
 })
 export default class CardComponent extends HTMLElement {
+  issue: any;
+
   constructor() {
     super();
-    this.classList.add("tudu-card");
   }
 
   onInit() {}
 
   render() {
-    this.innerHTML = `Card`;
+    this.innerHTML = `<p>${this.issue.title}</p>`;
   }
 }

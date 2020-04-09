@@ -1,0 +1,37 @@
+{
+  "columns": [
+    {
+      "title": "To Do",
+      "issues": [
+        {
+          "title": "Issue 1"
+        },
+        {
+          "title": "Issue 2"
+        }
+      ]
+    },
+    {
+      "title": "In Progress",
+      "issues": [
+        {
+          "title": "Issue 3"
+        },
+        {
+          "title": "Issue 4"
+        },
+        {
+          "title": "Issue 5"
+        }
+      ]
+    },
+    {
+      "title": "Completed",
+      "issues": [
+        {
+          "title": "Issue 6"
+        }
+      ]
+    }
+  ]
+}
