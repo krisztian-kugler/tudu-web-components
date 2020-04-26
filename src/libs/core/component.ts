@@ -13,15 +13,20 @@ export function Component(config: ComponentConfig) {
   return function <T extends { new (...args: any[]): any }>(constructor: T) {
     return class extends constructor {
       static selector = selector;
+      private initialized = false;
 
       constructor(...args: any[]) {
         super();
         if (providers.length) Injector.register(this as any, ...providers);
-        if (super.onInit) super.onInit();
       }
 
       connectedCallback() {
-        if (super.render) super.render();
+        if (!this.initialized) {
+          if (super.onInit) super.onInit();
+          if (super.render) super.render();
+          this.initialized = true;
+        }
+
         if (super.connectedCallback) super.connectedCallback();
       }
     };

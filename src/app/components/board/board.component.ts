@@ -1,9 +1,11 @@
 import { Component } from "@core";
 import "./board.component.scss";
 import ColumnComponent from "./column/column.component";
+import { DragDropService } from "../../services/drag-drop.service";
 
 @Component({
   selector: "tudu-board",
+  providers: [DragDropService],
 })
 export default class BoardComponent extends HTMLElement {
   constructor() {
