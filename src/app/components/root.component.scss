@@ -1,5 +1,12 @@
 tudu-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
   .workspace {
+    flex: 1;
+    display: flex;
+    flex-flow: column;
     padding: 0 1.5rem;
 
     .project-header {
