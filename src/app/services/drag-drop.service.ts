@@ -1,5 +1,5 @@
 export class DragDropService {
-  private placeholder: any = document.createElement("tudu-placeholder");
+  private placeholder: any = document.createElement("tudu-card-placeholder");
 
   defineDropzone(element: HTMLElement) {
     element.setAttribute("tudu-dropzone", "");

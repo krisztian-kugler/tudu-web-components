@@ -1,0 +1,27 @@
+tudu-card-placeholder {
+  display: block;
+  padding: 0.25rem 0.5rem;
+
+  .placeholder {
+    display: block;
+    height: 6rem;
+    width: 224px;
+    border-radius: 0.25rem;
+    background-color: #cedeef;
+    transition: height 500ms;
+    animation-name: pulse;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+    animation-duration: 500ms;
+  }
+}
+
+@keyframes pulse {
+  from {
+    background-color: #cedeef;
+  }
+  to {
+    background-color: #9cc1e6;
+  }
+}
